@@ -1,0 +1,33 @@
+.date-section {
+    background: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+    background-size: cover;
+    min-height: 100vh;
+    height: 100vh;
+    margin: 0%;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    
+    align-items: center;
+}
+
+.calendar {
+    background-color: black;
+    border: 2px solid white;
+    opacity: 60%;
+    padding: 10px;
+    display: flex;
+}
+
+.date-selector {
+    /* position: absolute;
+    top: 40%;
+    left: 15%;
+    right: 8%; */
+    width: 300px;
+    /* margin-left: 30px; */
+}
+
+h3 {
+    color: black;
+}

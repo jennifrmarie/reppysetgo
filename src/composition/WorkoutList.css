@@ -1,0 +1,36 @@
+.exercise-add {
+    background-color: black;
+    color: white;
+    opacity: 70%;
+    width: 70%;
+    max-width: 300px;
+    padding: 20px;
+    list-style: none;
+    font-size: 20px;
+}
+
+.form-box {
+    background-color: white;
+    margin: 10px;
+}
+
+.submit-button {
+    background-color: black;
+    color: white;
+}
+
+.item-name {
+    padding-bottom: 10px;
+    max-width: 300px;
+}
+
+.button {
+    color: black;
+}
+
+.remove-button {
+    margin-left: 50%;
+    background-color: black;
+    opacity: 70%;
+    color: white;
+}

@@ -33,7 +33,7 @@ export default class WorkoutList extends Component {
             {item.weight} lbs
           </div>
           <Link to={'/edit-workout/' + item.id} tag='button'>edit</Link>
-          <Link to={'/edit-workout'} className="remove-button" onClick={e => this.context.removeItem(item.id)}> {'    '}remove </button>
+          <Link to={'/add-workout'} className="remove-button" onClick={e => this.context.removeItem(item.id)}> {'    '}remove </Link>
 
             </li>)
           }

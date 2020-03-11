@@ -13,9 +13,7 @@ class WorkoutForm extends Component {
         },
         history: {
           push: () => { }
-        },
-        dates: [],
-        selectedDays: [],
+        }
       }
     static contextType = AppContext
     constructor(props) {
@@ -25,6 +23,7 @@ class WorkoutForm extends Component {
             sets: '',
             reps: '',
             weight: '',
+            date: '',
         };
         this.handleNameChange.bind(this);
         this.handleSubmit.bind(this)
@@ -35,7 +34,7 @@ class WorkoutForm extends Component {
 
     componentDidMount() {
         if(this.props.match.params.id) {
-            const item = this.context.items.find(item => item.id == this.props.match.params.id)
+            const item = this.context.items.find(item => item.id === this.props.match.params.id)
             this.setState({
                 name: item.name,
                 sets: item.sets,
@@ -47,7 +46,7 @@ class WorkoutForm extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         if(this.props.match.params.id) {
-            const item = this.context.items.find(item => item.id == this.props.match.params.id)
+            const item = this.context.items.find(item => item.id === this.props.match.params.id)
             item.name = this.state.name;
             item.sets = this.state.sets;
             item.reps = this.state.reps;
@@ -60,7 +59,7 @@ class WorkoutForm extends Component {
                 sets: this.state.sets,
                 reps: this.state.reps,
                 weight: this.state.weight,
-                date: this.context.selectedDay,            
+                date: this.context.date,            
             }
             this.context.addItem(item)
         }
@@ -70,6 +69,7 @@ class WorkoutForm extends Component {
             sets: '',
             reps: '',
             weight: '',
+            date: '',
         })
       }
     
@@ -101,6 +101,7 @@ class WorkoutForm extends Component {
             pathname: '/dashboard',
             state: { dates: [] }
         }
+        // console.log(date)
         return (
             <div class="workout-box">
                 <h1>REPPY, SET, GO!</h1>
@@ -131,7 +132,6 @@ class WorkoutForm extends Component {
 
                 
                 <WorkoutList
-                    date= {this.context.selectedDays} 
                 />
                 <NavButton
                     tag='button'

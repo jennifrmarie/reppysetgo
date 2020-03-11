@@ -5,6 +5,7 @@ import Dashboard from './composition/Dashboard'
 import { Link, Route } from 'react-router-dom';
 import LandingPage from './composition/LandingPage'
 import WorkoutForm from './composition/WorkoutForm'
+import CreateUser from './composition/CreateUser'
 
 
 export default class App extends React.Component {
@@ -44,9 +45,10 @@ export default class App extends React.Component {
        index,
        term: '',
        items: [],
-       selectedDays: date,
+       selectedDay: date,
      })
   }
+  
 
   setTerm = (term) => {
     this.setState({
@@ -60,15 +62,16 @@ export default class App extends React.Component {
     })
   }
 
-  // setDay = (day) => {
-  //   this.setState({
-  //     selectedDay: day,
-  //   })
-  // }
 
   setDays = (days) => {
     this.setState({
       selectedDays: days,
+    })
+  }
+
+  setDay = (day) => {
+    this.setState({
+      selectedDay: day
     })
   }
 
@@ -92,6 +95,14 @@ export default class App extends React.Component {
       path='/edit-workout/:id'
       component={WorkoutForm}
     />
+        <Route
+      path='/add-workout/:dateid'
+      component={WorkoutForm}
+    />
+    <Route
+      path='/sign-up'
+      component={CreateUser}
+    />
     </>
     )
   }
@@ -112,6 +123,8 @@ export default class App extends React.Component {
       setDay: this.setDay,
       editItem: this.editItem,
     }
+
+    console.log(this.setDay)
 
     return (
       <AppContext.Provider value={value}>

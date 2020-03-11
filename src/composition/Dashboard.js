@@ -5,42 +5,51 @@ import moment from 'moment';
 import AppContext from '../AppContext'
 import './Dashboard.css'
 import { withRouter } from 'react-router-dom'
+import WorkoutForm from './WorkoutForm';
 
 class Dashboard extends React.Component {
-state = {
-  selectedDays: []
-}  
+  constructor(props) {
+    super(props);
+    this.handleDayClick = this.handleDayClick.bind(this);
+    this.state = {
+      selectedDay: undefined,
+    };
+  }
 static contextType = AppContext
 
-  handleWeekClick = (weekNumber, days, e) => {
+  handleWeekClick = (day, days, e) => {
     this.context.setDays(days)
+    this.context.setDay(day)
   };
 
-  handleDayClick = (day, { selected }) => {
+  handleDayClick(day, modifiers = {}) {
+    if (modifiers.disabled) {
+      return;
+    }
     this.setState({
-      selectedDay: day,
-    })
+      selectedDay: modifiers.selected ? undefined : day,
+    });
   }
 
-  handleDateClicked = (index) => {
-  //  const index = e.currentTarget.getAttribute("data-index")
-   this.context.handleDateClicked(index)
-   this.props.history.push("/add-workout")
-  }
+  // handleDateClicked = (index) => {
+  // //  const index = e.currentTarget.getAttribute("data-index")
+  //  this.context.handleDateClicked(index)
+  // //  this.props.history.push("/add-workout")
+  // }
+
 
 render() {
-
-    const { selectedDays, selectedDay } = this.context;
+    const { selectedDays } = this.context;
     
     const daysAreSelected = selectedDays.length > 0;
     const modifiers = {
       selectedRange: daysAreSelected && {
         from: selectedDays[0],
-        to: selectedDays[6],
+        to: selectedDays[0],
       },
       selectedRangeStart: daysAreSelected && selectedDays[0],
-      selectedRangeEnd: daysAreSelected && selectedDays[6],
-      daysHighlighted: selectedDays,
+      selectedRangeEnd: daysAreSelected && selectedDays[0],
+      daysHighlighted: selectedDays && this.state.selectedDay
     };
     const modifiersStyles = {
       daysHighlighted: {
@@ -52,46 +61,54 @@ render() {
       }
     };
     let dates = this.context.selectedDays
-    // console.log(date)
-    const DateList = () => (
-      <div>
-      <ul className="date-selector">
-        {dates.map((date, index) => 
-        <li key={index} data-index={index} className="li-date" 
-        onClick={() => this.props.history.push("/add-workout") && this.context.handleDateClick(index)}>
-          {moment(date).format('MMM Do, YYYY')}
-        </li>
-        )}
-      </ul>
+    const date = this.state.selectedDay
+    console.log(date)
+    
+    // const DateList = () => (
+    //   <div>
+    //   <ul className="date-selector">
+    //     {dates.map((date, index) => 
+    //     <li key={index} data-index={index} className="li-date" 
+    //     onClick={() => this.props.history.push(`/add-workout/${date}`) && <WorkoutForm date={date} />}>
+    //       {moment(date).format('MMM Do, YYYY')}
+    //     </li>
+    //     )}
+    //   </ul>
+    //   </div>
+    // );
+
+    const SingleDate = () => (
+    <div className='li-date' onClick={() => this.props.history.push(`/add-workout/${date}`) && <WorkoutForm date={this.context.selectedDay} />}>
+        {moment(date).format('MMM Do, YYYY')}
       </div>
-    );
+    )
+
+
 
     return (
       <div className="date-section">
         <h1>REPPY, SET, GO!</h1>
-        <h3>click on a week to get started</h3>
+        <h3>click on a day to get started</h3>
         <div className="calendar">
         <DayPicker
           showWeekDays
           className="Selectable"
           selectedDays={this.context.selectedDays}
+          selectedDay={this.state.selectedDay}
           onDayClick={this.handleDayClick} 
           modifiers={modifiers}
           modifiersStyles={modifiersStyles}
-          showWeekNumbers
+          // showWeekNumbers
           onWeekClick={this.handleWeekClick}
         />
         </div>
         {/* {this.context.selectedDays} */}
-        <DateList 
-          />
-      
-      <div>
+        {/* {this.state.selectedDay ? this.state.selectedDay.toLocaleString() :  */}
+        {/* <DateList />  */}
+        <SingleDate />
 
         {/* <Link to="/add-workout"> Add Workout </Link> */}
         </div>
-      </div>
-
     );
   }
 }

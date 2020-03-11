@@ -41,6 +41,7 @@ export default class LandingPage extends Component {
                     <label htmlFor="rememberMe">Remember me</label>
                   </div>
                   <Link to='/dashboard'>Submit</Link>
+                  <Link to='/sign-up'>Create Account</Link>
                 </div>
               </form>
             </div>

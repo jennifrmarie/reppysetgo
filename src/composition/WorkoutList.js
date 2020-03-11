@@ -18,10 +18,11 @@ export default class WorkoutList extends Component {
   static contextType = AppContext
   render() {
     let items = this.context.items
-    if (this.props.date) {
-      items.filter(item => 
-        moment(this.props.date).isSame(item.date,"day")
-    )}
+    // if (this.props.date) {
+    //   items.filter(item => 
+    //     moment(this.props.date).isSame(item.date,"day")
+    // )}
+    console.log(items)
     return (
       <div>
         <ul class="workout-list">

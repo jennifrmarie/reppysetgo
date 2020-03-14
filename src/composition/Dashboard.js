@@ -6,6 +6,7 @@ import AppContext from '../AppContext'
 import './Dashboard.css'
 import { withRouter } from 'react-router-dom'
 import WorkoutForm from './WorkoutForm';
+import WorkoutList from './WorkoutList'
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Dashboard extends React.Component {
     this.handleDayClick = this.handleDayClick.bind(this);
     this.state = {
       selectedDay: undefined,
+      isEmptyState: true
     };
   }
 static contextType = AppContext
@@ -31,12 +33,13 @@ static contextType = AppContext
     });
   }
 
-  // handleDateClicked = (index) => {
-  // //  const index = e.currentTarget.getAttribute("data-index")
-  //  this.context.handleDateClicked(index)
-  // //  this.props.history.push("/add-workout")
-  // }
-
+  triggerWorkoutForm = () => {
+    this.setState({
+      ...this.state,
+      isAddWorkoutState: true,
+      isEmptyState: false
+    })
+  }
 
 render() {
     const { selectedDays } = this.context;
@@ -56,9 +59,9 @@ render() {
         backgroundColor: 'white',
         color: 'black',
       },
-      outside: {
-        backgroundColor: 'black'
-      }
+      // outside: {
+      //   backgroundColor: 'black'
+      // }
     };
     let dates = this.context.selectedDays
     const date = this.state.selectedDay
@@ -77,8 +80,9 @@ render() {
     //   </div>
     // );
 
-    const SingleDate = () => (
-    <div className='li-date' onClick={() => this.props.history.push(`/add-workout/${date}`) && <WorkoutForm date={this.context.selectedDay} />}>
+    const SingleDate = (itemId) => (
+    <div key={itemId} className='li-date' onClick={() => this.props.history.push(`/add-workout/${itemId}`)}>
+    {/* onClick={props.addWorkout}  */}
         {moment(date).format('MMM Do, YYYY')}
       </div>
     )
@@ -86,10 +90,11 @@ render() {
 
 
     return (
-      <div className="date-section">
-        <h1>REPPY, SET, GO!</h1>
-        <h3>click on a day to get started</h3>
-        <div className="calendar">
+      <div class="dashboard__background">
+        <div className="logo__dashboard"></div>
+        {/* <h3>click on a day to get started</h3> */}
+        <div class="calendar_container">
+        <div className="date-section">
         <DayPicker
           showWeekDays
           className="Selectable"
@@ -98,15 +103,14 @@ render() {
           onDayClick={this.handleDayClick} 
           modifiers={modifiers}
           modifiersStyles={modifiersStyles}
-          // showWeekNumbers
-          onWeekClick={this.handleWeekClick}
         />
         </div>
-        {/* {this.context.selectedDays} */}
-        {/* {this.state.selectedDay ? this.state.selectedDay.toLocaleString() :  */}
-        {/* <DateList />  */}
-        <SingleDate />
-
+        </div>
+      <SingleDate />
+      <WorkoutList
+                />
+        {/* {this.state.isEmptyState && <SingleDate addWorkout={this.triggerWorkoutForm}/>}
+        {this.state.isAddWorkoutState && <WorkoutForm />} */}
         {/* <Link to="/add-workout"> Add Workout </Link> */}
         </div>
     );

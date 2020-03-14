@@ -25,9 +25,9 @@ export default class App extends React.Component {
     })
   }
 
-  removeItem = (id) => {
+  removeItem = (itemId) => {
     this.setState({
-      items: this.state.items.filter(item => item.id !== id)
+      items: this.state.items.filter(item => item.id !== itemId)
     })
   }
 
@@ -123,8 +123,6 @@ export default class App extends React.Component {
       setDay: this.setDay,
       editItem: this.editItem,
     }
-
-    console.log(this.setDay)
 
     return (
       <AppContext.Provider value={value}>

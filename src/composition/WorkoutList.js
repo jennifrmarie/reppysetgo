@@ -14,32 +14,31 @@ export default class WorkoutList extends Component {
       goBack: () => { }
     },
   }
+
+  
   
   static contextType = AppContext
+
   render() {
-    let items = this.context.items
-    // if (this.props.date) {
-    //   items.filter(item => 
-    //     moment(this.props.date).isSame(item.date,"day")
-    // )}
-    console.log(items)
+    const items = this.context.items
     return (
       <div>
         <ul class="workout-list">
-          {
-            items.map((item, index) => <li class="exercise-add" key={index}>
-            <div class="item-name">{item.name}{':  '}
+        {
+          items.map((item, index) => 
+          <li class="exercise-add" key={index}>
+          <div class="item-name">
+            {item.name}{':  '}
             {item.sets} sets{',  '}
             {item.reps} reps{':  '}
             {item.weight} lbs
           </div>
-          <Link to={'/edit-workout/' + item.id} tag='button'>edit</Link>
-          <Link to={'/add-workout'} className="remove-button" onClick={e => this.context.removeItem(item.id)}> {'    '}remove </Link>
-
-            </li>)
-          }
-        </ul>
-
+        <Link to={'/edit-workout/' + item.id} tag='button'>edit</Link>
+        {/* <Link to={'/add-workout'} className="remove-button" onClick={e => this.context.removeItem(item.id)}> {'    '}remove </Link> */}
+        <button onClick={e => this.context.removeItem(item.id)}>remove</button>
+          </li>)
+        }
+      </ul>
       </div>
     )
   }

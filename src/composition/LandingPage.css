@@ -5,6 +5,14 @@
     margin-top: 100px;
 }
 
-#username, #password {
-    color: black;
+.login_new_account {
+    margin-top: 90px;
+}
+
+.login_button {
+    font-size: 20px;
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    padding: 10px;
 }

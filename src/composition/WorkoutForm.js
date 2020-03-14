@@ -42,8 +42,17 @@ class WorkoutForm extends Component {
                 weight: item.weight
             })
         }
-    }
+    }    
+
     handleSubmit = (e) => {
+        const data = {
+            id: uuid(),
+            name: this.state.name,
+            sets: this.state.sets,
+            reps: this.state.reps,
+            weight: this.state.weight,
+            date: this.context.date,
+        }
         e.preventDefault()
         if(this.props.match.params.id) {
             const item = this.context.items.find(item => item.id === this.props.match.params.id)
@@ -63,6 +72,18 @@ class WorkoutForm extends Component {
             }
             this.context.addItem(item)
         }
+        fetch('http://localhost:8000/api/workouts', {
+            method: 'post',
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            this.props.history.push(`/add-workout/${data.id}`)
+        })
        
         this.setState({
             name: '',
@@ -104,7 +125,7 @@ class WorkoutForm extends Component {
         // console.log(date)
         return (
             <div class="workout-box">
-                <h1>REPPY, SET, GO!</h1>
+                {/* <h1>REPPY, SET,</h1> */}
                 <form class="workout-form">
                     <label htmlFor='workout-name-input'>
                         WORKOUT:

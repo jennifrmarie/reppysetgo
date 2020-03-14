@@ -20,32 +20,52 @@ export default class LandingPage extends Component {
     handlePasswordInput(e) {
         this.setState({
             password: e.target.value,
-        })        
+        })     
     }
+
+    handleSubmit = (e) => {
+      e.preventDefault()
+      const user_name = e.target.user_name.value
+      const password = e.target.password.value
+      const data = { user_name, password }
+      fetch('http://localhost:8000/api/auth/login', {
+          method: 'post',
+          headers: {
+              "content-type": "application/json"
+          },
+          body: JSON.stringify(data)
+      })
+      .then(res => res.json())
+      .then(data => {
+          console.log(data)
+          localStorage.authToken = data.authToken;
+          this.props.history.push('/dashboard')
+      })
+    }
+
+    handleCreateAccount = (e) => {
+      e.preventDefault()
+      this.props.history.push('/sign-up')
+    }
+
     render() {
         return (
-            <div className="login">
-            <h1>Reppy, Set, GO!</h1>
-            <h2 className="below__head">(but do you, bro?)</h2>
-            <div className="login__form">
-              <form>
+              <form onSubmit={this.handleSubmit}>
+              <div className="logo__login"></div>
                 <div className="login__form__credentials">
-                  <input type="text" placeholder="Username" value={this.state.username}
-                        onChange={this.handleUsernameInput.bind(this)} name="username" id="username"/>
-                  <input type="password" placeholder="Password" value={this.state.password}
-                        onChange={this.handlePasswordInput.bind(this)} name="password" id="password"/>
-                </div>
-                <div className="login__form__controls">
-                  <div className="login__form__remember">
+                <h3 class="login__header">Log In!</h3>
+                  <input class="username" type="text" placeholder="Username" name="user_name" id="user_name"/>
+                  <input class="password" type="password" placeholder="Password" name="password" id="password"/>
+                    <div className="login__controls">
                     <input type="checkbox" name="rememberMe" id="rememberMe"/>
                     <label htmlFor="rememberMe">Remember me</label>
+                    </div>
+                  <button class="login_button">Login</button>
+                  <div class="login_new_account">
+                  <button className="account_button" onClick={this.handleCreateAccount}>Create a New Account</button>
                   </div>
-                  <Link to='/dashboard'>Submit</Link>
-                  <Link to='/sign-up'>Create Account</Link>
                 </div>
               </form>
-            </div>
-          </div>
         )
     }
 }

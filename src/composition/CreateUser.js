@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
 import { Link, Route } from 'react-router-dom';
+import './CreateUser.css'
+
+import Img from 'react-image';
 
 export default class CreateUser extends Component {
+
     onSubmit = (e) => {
         e.preventDefault()
         const user_name = e.target.user_name.value
@@ -20,22 +24,22 @@ export default class CreateUser extends Component {
             this.props.history.push('/')
         })
     }
+
+
     render() {
         return (
+            
             <form onSubmit={this.onSubmit}>
+                <div className="logo__login"></div>
                 <div className="login__form__credentials">
-                    <input type="text" placeholder="Username" 
+                    <h3 class="login__header">Let's get started!</h3>
+                    <input class="username" type="text" placeholder="Username" 
                          name="user_name" id="user_name" />
-                    <input type="password" placeholder="Password"
+                    <input class="password" type="password" placeholder="Password"
                         name="password" id="password" />
-                </div>
-                <div className="login__form__controls">
-                    <div className="login__form__remember">
-                        <input type="checkbox" name="rememberMe" id="rememberMe" />
-                        <label htmlFor="rememberMe">Remember me</label>
-                    </div>
-                    <button>Submit</button>
-
+                    <input class="password" type="password" placeholder="Re-enter Password"
+                        name="password" id="password" />
+                    <button class="account_button">Create Account</button>
                 </div>
             </form>
         )

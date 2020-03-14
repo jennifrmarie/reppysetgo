@@ -1,14 +1,32 @@
 .date-section {
-    background: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
-    background-size: cover;
-    min-height: 100vh;
-    height: 100vh;
-    margin: 0%;
+    width: 55%;
+    max-width: 400px;
     display: flex;
-    position: relative;
     flex-direction: column;
-    
+    background-repeat: no-repeat;
+    align-items: center; 
+    justify-content: center;;
+}
+
+.calendar_container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    background-color: #ece8e8fb;
+    min-height: 350px;
+    /* background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); */
+}
+
+.logo__dashboard {
+    background-image: url('https://i.imgur.com/jBMcwAH.png');
+
+    background-color: #ece8e8fb;
+    background-position: center;
+    font-size: 20px;
+    position: relative;
+    min-height: 200px;
+    max-width: 100%;
+    background-repeat: no-repeat;
 }
 
 .calendar {
@@ -17,6 +35,10 @@
     opacity: 60%;
     padding: 10px;
     display: flex;
+}
+
+.calendar:hover {
+    color: black;
 }
 
 .date-selector {
@@ -28,6 +50,16 @@
     /* margin-left: 30px; */
 }
 
-h3 {
+.dashboard__background {
+    min-height: 100vh;
+    background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-size: 100%; */
+}
+
+.DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
     color: black;
 }
+
+

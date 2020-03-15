@@ -38,7 +38,7 @@ export default class CreateUser extends Component {
                     <input class="password" type="password" placeholder="Password"
                         name="password" id="password" />
                     <input class="password" type="password" placeholder="Re-enter Password"
-                        name="password" id="password" />
+                        name="passwordconfirm" id="passwordconfirm" />
                     <button class="account_button">Create Account</button>
                 </div>
             </form>

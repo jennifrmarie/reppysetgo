@@ -5,6 +5,8 @@ import WorkoutList from './WorkoutList'
 import './WorkoutForm.css'
 import NavButton from './NavButton'
 import { withRouter } from 'react-router-dom'
+import config from '../config'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  
 class WorkoutForm extends Component {
     static defaultProps = {
@@ -42,7 +44,10 @@ class WorkoutForm extends Component {
                 weight: item.weight
             })
         }
-    }    
+    }
+    getAuthToken() {
+        return window.localStorage.getItem(config.TOKEN_KEY)
+      }    
 
     handleSubmit = (e) => {
         const data = {
@@ -51,7 +56,7 @@ class WorkoutForm extends Component {
             sets: this.state.sets,
             reps: this.state.reps,
             weight: this.state.weight,
-            date: this.context.date,
+            // date: this.props.dateId,
         }
         e.preventDefault()
         if(this.props.match.params.id) {
@@ -75,8 +80,10 @@ class WorkoutForm extends Component {
         fetch('http://localhost:8000/api/workouts', {
             method: 'post',
             headers: {
-                "content-type": "application/json"
+                "content-type": "application/json",
+                // "Authorization": `Bearer ${localStorage.authToken}`,
             },
+            
             body: JSON.stringify(data)
         })
         .then(res => res.json())
@@ -122,37 +129,45 @@ class WorkoutForm extends Component {
             pathname: '/dashboard',
             state: { dates: [] }
         }
-        // console.log(date)
+        console.log(this.props.dateId)
         return (
-            <div class="workout-box">
-                {/* <h1>REPPY, SET,</h1> */}
-                <form class="workout-form">
+            <div className="workout-box">
+                <nav className="logo__nav"></nav>
+                <form className="workout-form">
+                    <div>
                     <label htmlFor='workout-name-input'>
-                        WORKOUT:
+                        LIFT:
                     </label>
-                    <input class="form-box1" type="text" value={this.state.name}
-                        onChange={this.handleNameChange.bind(this)} name="Workout" /> 
+                    <input className="form-box1" type="text" align="right" value={this.state.name}
+                        onChange={this.handleNameChange.bind(this)} name="Workout" />{' '} 
+                    </div>
+                    <div>
                     <label htmlFor='workout-set-input'>
                         SETS:
                     </label>
-                    <input class="form-box2" type="text" value={this.state.sets}
-                        onChange={this.handleSetChange.bind(this)} />
+                    <input className="form-box2" type="text" align="right" value={this.state.sets}
+                        onChange={this.handleSetChange.bind(this)} />{' '}
+                    </div>
+                    <div>
                     <label htmlFor='workout-reps-input'>
                         REPS:
                     </label>
-                    <input class="form-box3" type="text" value={this.state.reps}
-                        onChange={this.handleRepChange.bind(this)} />
+                    <input className="form-box3" type="text" align="right" value={this.state.reps}
+                        onChange={this.handleRepChange.bind(this)} />{' '}
+                    </div>
+                    <div>
                     <label htmlFor='workout-weight-input'>
                         WEIGHT:
                     </label>
-                    <input class="form-box4" type="text" value={this.state.weight}
-                        onChange={this.handleWeightChange.bind(this)} />
+                    <input className="form-box4" type="text" align="right" value={this.state.weight}
+                        onChange={this.handleWeightChange.bind(this)} />{' '}
+                    </div>
+                    <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
+
                     </form>
-                    <button class="submit-button" onClick={this.handleSubmit}>Submit</button>
-
-
-                
                 <WorkoutList
+                    dateId={this.props.dateId}
+                    className="list_page"
                 />
                 <NavButton
                     tag='button'
@@ -160,7 +175,7 @@ class WorkoutForm extends Component {
                     onClick={() => this.props.history.push(location)}
                     className='NotePage__back-button'
                     >
-                    Back
+                    <FontAwesomeIcon icon='hand-point-left' size="lg" />
                 </NavButton>
             </div>
         )

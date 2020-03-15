@@ -1,6 +1,7 @@
 .date-section {
     width: 55%;
     max-width: 400px;
+    min-width: 400px;
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
@@ -17,6 +18,10 @@
     /* background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); */
 }
 
+.li-date {
+    font-size: 20px;
+    letter-spacing: .3em;
+}
 .logo__dashboard {
     background-image: url('https://i.imgur.com/jBMcwAH.png');
 

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import config from '../config'
 import './LandingPage.css'
 
 export default class LandingPage extends Component {
@@ -12,6 +13,8 @@ export default class LandingPage extends Component {
         this.handleUsernameInput.bind(this);
         this.handlePasswordInput.bind(this);
     }
+
+    state = { error: null }
     handleUsernameInput(e) {
         this.setState({
             username: e.target.value,
@@ -22,24 +25,44 @@ export default class LandingPage extends Component {
             password: e.target.value,
         })     
     }
+    saveAuthToken(token) {
+      window.localStorage.setItem(config.TOKEN_KEY, token)
+    }
+
 
     handleSubmit = (e) => {
       e.preventDefault()
       const user_name = e.target.user_name.value
       const password = e.target.password.value
       const data = { user_name, password }
+      const throwErrorMsg = () => {
+        return (
+          <span>incorrect</span>
+        )
+      }
+      
       fetch('http://localhost:8000/api/auth/login', {
           method: 'post',
           headers: {
-              "content-type": "application/json"
+              "content-type": "application/json",
+              // "Authorization": "Bearer 32klds-a2243-asa3232"
           },
+
           body: JSON.stringify(data)
       })
-      .then(res => res.json())
+      .then((res) => {
+        if(!res.ok) {
+          throw new Error(window.alert('incorrect username/password'))
+          
+        }
+        return res.json();
+      })
       .then(data => {
-          console.log(data)
           localStorage.authToken = data.authToken;
           this.props.history.push('/dashboard')
+      })
+      .catch((error) => {
+          console.error('Error')
       })
     }
 

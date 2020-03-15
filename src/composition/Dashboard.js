@@ -65,7 +65,7 @@ render() {
     };
     let dates = this.context.selectedDays
     const date = this.state.selectedDay
-    console.log(date)
+    const dateid = moment(date).format('MMMDoYYYY')
     
     // const DateList = () => (
     //   <div>
@@ -107,11 +107,10 @@ render() {
         </div>
         </div>
       <SingleDate />
-      <WorkoutList
-                />
-        {/* {this.state.isEmptyState && <SingleDate addWorkout={this.triggerWorkoutForm}/>}
-        {this.state.isAddWorkoutState && <WorkoutForm />} */}
-        {/* <Link to="/add-workout"> Add Workout </Link> */}
+      <WorkoutList />
+        {/* {this.state.isEmptyState && <SingleDate addWorkout={this.triggerWorkoutForm}/>} */}
+        {this.state.isAddWorkoutState && <WorkoutForm dateId={dateid}/>} 
+        {/* /* <Link to="/add-workout"> Add Workout </Link> */}
         </div>
     );
   }

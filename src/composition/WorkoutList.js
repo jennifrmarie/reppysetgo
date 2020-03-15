@@ -22,15 +22,15 @@ export default class WorkoutList extends Component {
   render() {
     const items = this.context.items
     return (
-      <div>
+      <div className="workout__div">
         <ul class="workout-list">
         {
           items.map((item, index) => 
           <li class="exercise-add" key={index}>
           <div class="item-name">
             {item.name}{':  '}
-            {item.sets} sets{',  '}
-            {item.reps} reps{':  '}
+            {item.sets}{' X  '}
+            {item.reps}{'  --  '}
             {item.weight} lbs
           </div>
         <Link to={'/edit-workout/' + item.id} tag='button'>edit</Link>

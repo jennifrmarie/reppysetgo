@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
-import { Link, Route } from 'react-router-dom';
 import './CreateUser.css'
-
-import Img from 'react-image';
 
 export default class CreateUser extends Component {
 

@@ -4,11 +4,10 @@ import 'react-day-picker/lib/style.css';
 import moment from 'moment';
 import AppContext from '../AppContext'
 import './Dashboard.css'
-import { withRouter } from 'react-router-dom'
 import WorkoutForm from './WorkoutForm';
 import WorkoutList from './WorkoutList'
 
-class Dashboard extends React.Component {
+export default class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.handleDayClick = this.handleDayClick.bind(this);
@@ -59,13 +58,9 @@ render() {
         backgroundColor: 'white',
         color: 'black',
       },
-      // outside: {
-      //   backgroundColor: 'black'
-      // }
     };
-    let dates = this.context.selectedDays
     const date = this.state.selectedDay
-    const dateid = moment(date).format('MMMDoYYYY')
+    const dateid = moment(date).format('MMDDYYYY')
     
     // const DateList = () => (
     //   <div>
@@ -80,20 +75,20 @@ render() {
     //   </div>
     // );
 
-    const SingleDate = (itemId) => (
-    <div key={itemId} className='li-date' onClick={() => this.props.history.push(`/add-workout/${itemId}`)}>
+    const SingleDate = (index) => (
+    <div key={index} className='li-date' onClick={() => this.props.history.push(`/add-workout/${dateid}`)}>
     {/* onClick={props.addWorkout}  */}
         {moment(date).format('MMM Do, YYYY')}
       </div>
     )
 
-
+    let items = this.context.items
 
     return (
-      <div class="dashboard__background">
+      <div className="dashboard__background">
         <div className="logo__dashboard"></div>
         {/* <h3>click on a day to get started</h3> */}
-        <div class="calendar_container">
+        <div className="calendar_container">
         <div className="date-section">
         <DayPicker
           showWeekDays
@@ -107,7 +102,19 @@ render() {
         </div>
         </div>
       <SingleDate />
-      <WorkoutList />
+      <ul className="dashboard__list">
+        {
+          items.map((item, index) => 
+            <li key={index}>
+              {moment(item.date).format('MMDDYYYY')}
+              {item.name}
+              {item.sets}
+              {item.reps}
+              {item.weight}
+            </li>
+          )
+        }
+      </ul>
         {/* {this.state.isEmptyState && <SingleDate addWorkout={this.triggerWorkoutForm}/>} */}
         {this.state.isAddWorkoutState && <WorkoutForm dateId={dateid}/>} 
         {/* /* <Link to="/add-workout"> Add Workout </Link> */}
@@ -115,5 +122,3 @@ render() {
     );
   }
 }
-
-export default withRouter(Dashboard)

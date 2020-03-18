@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import config from '../config'
 import './LandingPage.css'
 
@@ -35,11 +34,6 @@ export default class LandingPage extends Component {
       const user_name = e.target.user_name.value
       const password = e.target.password.value
       const data = { user_name, password }
-      const throwErrorMsg = () => {
-        return (
-          <span>incorrect</span>
-        )
-      }
       
       fetch('http://localhost:8000/api/auth/login', {
           method: 'post',

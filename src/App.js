@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import AppContext from './AppContext'
 import Dashboard from './composition/Dashboard'
-import { Link, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import LandingPage from './composition/LandingPage'
 import WorkoutForm from './composition/WorkoutForm'
 import CreateUser from './composition/CreateUser'
@@ -16,25 +16,72 @@ export default class App extends React.Component {
     selectedDay: '',
   }
 
-  addItem = (item) => {
-    this.setState({
-      items: [
-        ...this.state.items,
-        item
-      ]
-    })
+  componentDidMount() {
+    this.getItems()
+  }
+
+  addItem = (data) => {
+    return fetch('http://localhost:8000/api/workouts', {
+            method: 'post',
+            headers: {
+                'content-type': 'application/json',
+                "Authorization": `Bearer ${localStorage.authToken}`,
+            },
+            
+            body: JSON.stringify(data)
+        })
+        .then(res => 
+            res.json())
+        .then(data => {
+            this.setState({
+              items: [
+                ...this.state.items,
+                data
+              ]
+            })
+            console.log(data)
+            
+        })
+   
   }
 
   removeItem = (itemId) => {
-    this.setState({
-      items: this.state.items.filter(item => item.id !== itemId)
-    })
+    return fetch(`http://localhost:8000/api/workouts/${itemId}`, {
+            method: 'delete',
+            headers: {
+                "Authorization": `Bearer ${localStorage.authToken}`,
+            },
+        })
+        .then(data => {
+          this.setState({
+            items: this.state.items.filter(item => item.id !== itemId)
+          })
+            console.log(data)
+            
+        })
+    
   }
 
   editItem = (item) => {
-    this.setState({
-      items: this.state.items.map(i => i.id == item.id ? item : i)
-    })
+      return fetch(`http://localhost:8000/api/workouts/${item.id}`, {
+              method: 'put',
+              headers: {
+                  'content-type': 'application/json',
+                  "Authorization": `Bearer ${localStorage.authToken}`,
+              },
+              
+              body: JSON.stringify(item)
+          })
+          .then(res => 
+              res.json())
+          .then(data => {
+            this.setState({
+              items: this.state.items.map(i => i.id === item.id ? item : i)
+            })
+              console.log(data)
+              
+          })
+
   }
 
   handleDateClicked = (index) => {
@@ -75,6 +122,25 @@ export default class App extends React.Component {
     })
   }
 
+  getItems = () => {
+    return fetch(`http://localhost:8000/api/workouts/`, {
+      method: 'get',
+      headers: {
+          'content-type': 'application/json',
+          "Authorization": `Bearer ${localStorage.authToken}`,
+      },
+  })
+  .then(res => 
+      res.json())
+  .then(items => {
+    
+    this.setState({
+      items
+    })
+      
+  })
+  }
+
 
   renderMainRoutes() {
     return (
@@ -96,7 +162,7 @@ export default class App extends React.Component {
       component={WorkoutForm}
     />
         <Route
-      path='/add-workout/:dateid'
+      path='/add-workout/:dateId'
       component={WorkoutForm}
     />
     <Route

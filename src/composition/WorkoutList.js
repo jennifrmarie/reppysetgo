@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
 import './WorkoutList.css'
 import AppContext from '../AppContext'
-import NavButton from './NavButton'
 import React, { Component } from 'react'
-import moment from 'moment'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import moment from 'moment';
+import Moment from 'react-moment'
+import Dashboard from './Dashboard'
+
 
 export default class WorkoutList extends Component {
   static defaultProps = {
@@ -20,26 +23,34 @@ export default class WorkoutList extends Component {
   static contextType = AppContext
 
   render() {
-    const items = this.context.items
+    let items = this.context.items
+    if (this.props.dateId) {
+      items = items.filter(item => {
+        const date = moment(item.date).format("MMDDYYYY")
+        // console.log(item.date, this.props.dateId, date)
+        return date == this.props.dateId
+      })
+    }
+    // const dateFormat = moment(item.date).format("MMDDYYYY")
     return (
-      <div className="workout__div">
-        <ul class="workout-list">
+        <ul className="workout-list">
         {
           items.map((item, index) => 
-          <li class="exercise-add" key={index}>
-          <div class="item-name">
+          
+          <li className="exercise-add" key={index}>
+          <div className="item-name">
             {item.name}{':  '}
             {item.sets}{' X  '}
             {item.reps}{'  --  '}
-            {item.weight} lbs
+            {item.weight}{"\n"} 
+            {!<Dashboard
+              itemDate= {this.props.match.params.items} />}
           </div>
-        <Link to={'/edit-workout/' + item.id} tag='button'>edit</Link>
-        {/* <Link to={'/add-workout'} className="remove-button" onClick={e => this.context.removeItem(item.id)}> {'    '}remove </Link> */}
-        <button onClick={e => this.context.removeItem(item.id)}>remove</button>
+        <Link to={'/edit-workout/' + item.id} tag='button'><FontAwesomeIcon icon="edit" /></Link>
+        <div className="delete__button" onClick={e => this.context.removeItem(item.id)}><FontAwesomeIcon icon="trash-alt" /></div>
           </li>)
         }
       </ul>
-      </div>
     )
   }
 }

@@ -6,6 +6,7 @@ import './WorkoutForm.css'
 import NavButton from './NavButton'
 import { withRouter } from 'react-router-dom'
 import config from '../config'
+import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  
 class WorkoutForm extends Component {
@@ -36,7 +37,7 @@ class WorkoutForm extends Component {
 
     componentDidMount() {
         if(this.props.match.params.id) {
-            const item = this.context.items.find(item => item.id === this.props.match.params.id)
+            const item = this.context.items.find(item => item.id === parseInt(this.props.match.params.id))
             this.setState({
                 name: item.name,
                 sets: item.sets,
@@ -50,22 +51,23 @@ class WorkoutForm extends Component {
       }    
 
     handleSubmit = (e) => {
+        e.preventDefault()
         const data = {
-            id: uuid(),
             name: this.state.name,
             sets: this.state.sets,
             reps: this.state.reps,
             weight: this.state.weight,
-            // date: this.props.dateId,
+            date: moment(this.props.match.params.dateId)
         }
-        e.preventDefault()
+  
         if(this.props.match.params.id) {
-            const item = this.context.items.find(item => item.id === this.props.match.params.id)
+            const item = this.context.items.find(item => item.id === parseInt(this.props.match.params.id))
             item.name = this.state.name;
             item.sets = this.state.sets;
             item.reps = this.state.reps;
             item.weight = this.state.weight;
-            this.context.editItem(item);
+            this.context.editItem(item)
+
         } else {
             const item = {
                 id: uuid(),
@@ -73,24 +75,13 @@ class WorkoutForm extends Component {
                 sets: this.state.sets,
                 reps: this.state.reps,
                 weight: this.state.weight,
-                date: this.context.date,            
+                date: moment(this.props.match.params.dateId,"MMDDYYYY")          
             }
+            console.log(this.context.date)
             this.context.addItem(item)
+            // .then(data => this.props.history.push(`/add-workout/${item.id}`))
         }
-        fetch('http://localhost:8000/api/workouts', {
-            method: 'post',
-            headers: {
-                "content-type": "application/json",
-                // "Authorization": `Bearer ${localStorage.authToken}`,
-            },
-            
-            body: JSON.stringify(data)
-        })
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-            this.props.history.push(`/add-workout/${data.id}`)
-        })
+        
        
         this.setState({
             name: '',
@@ -129,7 +120,6 @@ class WorkoutForm extends Component {
             pathname: '/dashboard',
             state: { dates: [] }
         }
-        console.log(this.props.dateId)
         return (
             <div className="workout-box">
                 <nav className="logo__nav"></nav>
@@ -162,12 +152,11 @@ class WorkoutForm extends Component {
                     <input className="form-box4" type="text" align="right" value={this.state.weight}
                         onChange={this.handleWeightChange.bind(this)} />{' '}
                     </div>
-                    <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
+                    <button tag='a' className="submit-button" onClick={this.handleSubmit}>Submit</button>
 
                     </form>
                 <WorkoutList
-                    dateId={this.props.dateId}
-                    className="list_page"
+                    dateId={this.props.match.params.dateId}
                 />
                 <NavButton
                     tag='button'

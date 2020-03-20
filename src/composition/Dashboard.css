@@ -1,7 +1,7 @@
 .date-section {
     width: 55%;
     max-width: 400px;
-    min-width: 400px;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     background-repeat: no-repeat;
@@ -15,16 +15,19 @@
     align-items: center;
     background-color: #ece8e8fb;
     min-height: 350px;
-    /* background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); */
 }
 
 .li-date {
     font-size: 20px;
     letter-spacing: .3em;
+    color: white;
+    background-color: black;
+    border: 3px solid #ece8e8fb;
 }
 .logo__dashboard {
     background-image: url('https://i.imgur.com/jBMcwAH.png');
-
+    /* background-size: cover; */
+    background-size: 60%;
     background-color: #ece8e8fb;
     background-position: center;
     font-size: 20px;
@@ -32,6 +35,95 @@
     min-height: 200px;
     max-width: 100%;
     background-repeat: no-repeat;
+}
+
+.dashboard__list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    min-width: 200px;
+    padding: 10px;
+}
+
+.workout-name {
+    color: black;
+    align-self: center;
+    display: flex;
+    text-align: center;
+    margin: auto;
+    /* padding-right: 10px; */
+}
+
+.dashboard_delete:hover {
+    cursor: pointer;
+}
+
+.dashboard_delete {
+    margin: auto;
+}
+
+.edit_button {
+    padding-right: 5px;
+}
+
+.workout-weight {
+    color: black;
+    padding-right:20px ;
+    align-self: center;
+    padding-right: 50px;
+}
+
+.fa-edit > path {
+    color: #000000;
+    position: relative;
+}
+
+.fa-edit > path:hover {
+    color: #ad4141fb;
+    background-color: black;
+}
+
+.fa-trash-alt > path {
+    color: #000000;
+    position: relative;
+}
+
+.fa-trash-alt > path:hover {
+    color: #ad4141fb;
+}
+
+.nav_buttons {
+    display: flex;
+    justify-self: flex-end;
+    margin-left: auto;
+}
+.sets_reps {
+    align-self: center;
+    color: black;
+}
+
+.dashboard__workout {
+    color: black;
+    width: 40%;
+    
+    padding: 10px;
+    margin: 5px;
+    background-color: #ece8e8fb;
+    letter-spacing: .2em;
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: row;
+    line-height: 1.5em;
+    font-size: 20px;
+}
+
+.dashboard__date {
+    color: black;
+    padding-right: 30px;
+    align-self: center;
 }
 
 .calendar {
@@ -47,12 +139,7 @@
 }
 
 .date-selector {
-    /* position: absolute;
-    top: 40%;
-    left: 15%;
-    right: 8%; */
     width: 300px;
-    /* margin-left: 30px; */
 }
 
 .dashboard__background {
@@ -60,11 +147,47 @@
     background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
     /* background-size: 100%; */
 }
 
 .DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
     color: black;
+}
+
+@media only screen and (max-width: 900px) {
+    .dashboard__list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo__dashboard {
+        background-size: 100%;
+    }
+    .dashboard__workout {
+        display: flex;
+        font-size: 15px;
+        flex-direction: row;
+        flex-shrink: 1;
+        width: 100%;
+    }
+    .nav_buttons {
+        margin-right: auto;
+    }
+}
+
+@media only screen and (max-width: 1190px) and (min-width: 900px) {
+    .dashboard__list {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .dashboard__workout {
+        width: 60%;
+    }
 }
 
 

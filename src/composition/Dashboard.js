@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import moment from 'moment';
 import AppContext from '../AppContext'
 import './Dashboard.css'
 import WorkoutForm from './WorkoutForm';
-import WorkoutList from './WorkoutList'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -61,23 +62,12 @@ render() {
     };
     const date = this.state.selectedDay
     const dateid = moment(date).format('MMDDYYYY')
-    
-    // const DateList = () => (
-    //   <div>
-    //   <ul className="date-selector">
-    //     {dates.map((date, index) => 
-    //     <li key={index} data-index={index} className="li-date" 
-    //     onClick={() => this.props.history.push(`/add-workout/${date}`) && <WorkoutForm date={date} />}>
-    //       {moment(date).format('MMM Do, YYYY')}
-    //     </li>
-    //     )}
-    //   </ul>
-    //   </div>
-    // );
 
     const SingleDate = (index) => (
-    <div key={index} className='li-date' onClick={() => this.props.history.push(`/add-workout/${dateid}`)}>
-    {/* onClick={props.addWorkout}  */}
+      <div key={index} 
+        className='li-date' 
+        onClick={() => this.props.history.push(`/add-workout/${dateid}`)}
+      >
         {moment(date).format('MMM Do, YYYY')}
       </div>
     )
@@ -87,38 +77,39 @@ render() {
     return (
       <div className="dashboard__background">
         <div className="logo__dashboard"></div>
-        {/* <h3>click on a day to get started</h3> */}
         <div className="calendar_container">
         <div className="date-section">
-        <DayPicker
-          showWeekDays
-          className="Selectable"
-          selectedDays={this.context.selectedDays}
-          selectedDay={this.state.selectedDay}
-          onDayClick={this.handleDayClick} 
-          modifiers={modifiers}
-          modifiersStyles={modifiersStyles}
-        />
+          <DayPicker
+            showWeekDays
+            className="Selectable"
+            selectedDays={this.context.selectedDays}
+            selectedDay={this.state.selectedDay}
+            onDayClick={this.handleDayClick} 
+            modifiers={modifiers}
+            modifiersStyles={modifiersStyles}
+          />
         </div>
         </div>
       <SingleDate />
       <ul className="dashboard__list">
         {
           items.map((item, index) => 
-            <li key={index}>
-              {moment(item.date).format('MMDDYYYY')}
-              {item.name}
-              {item.sets}
-              {item.reps}
-              {item.weight}
+            <li className="dashboard__workout" key={index}>
+              <div className="dashboard__date">{moment(item.date).format('MM-DD-YY')}</div>
+              <span className="workout-name">{item.name}{''}</span>
+                <span className="sets_reps">{item.sets}{"X"}
+                {item.reps}{''}{":"}{'   '}</span>
+                <span className="workout-weight">{" "}{item.weight}{"  lbs "}</span>
+                <span class="nav_buttons">
+                <Link to={'/edit-workout/' + item.id} tag='button' className="edit_button"><FontAwesomeIcon icon="edit" color="black" /></Link>{'  '}
+                <div className="dashboard_delete" onClick={e => this.context.removeItem(item.id)}><FontAwesomeIcon icon="trash-alt" /></div>
+              </span>
             </li>
           )
         }
       </ul>
-        {/* {this.state.isEmptyState && <SingleDate addWorkout={this.triggerWorkoutForm}/>} */}
         {this.state.isAddWorkoutState && <WorkoutForm dateId={dateid}/>} 
-        {/* /* <Link to="/add-workout"> Add Workout </Link> */}
-        </div>
+    </div>
     );
   }
 }

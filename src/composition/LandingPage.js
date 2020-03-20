@@ -39,7 +39,6 @@ export default class LandingPage extends Component {
           method: 'post',
           headers: {
               "content-type": "application/json",
-              // "Authorization": "Bearer 32klds-a2243-asa3232"
           },
 
           body: JSON.stringify(data)
@@ -71,8 +70,8 @@ export default class LandingPage extends Component {
               <div className="logo__login"></div>
                 <div className="login__form__credentials">
                 <h3 class="login__header">Log In!</h3>
-                  <input class="username" type="text" placeholder="Username" name="user_name" id="user_name"/>
-                  <input class="password" type="password" placeholder="Password" name="password" id="password"/>
+                  <input class="username" type="text" placeholder="guest" name="user_name" id="user_name"/>
+                  <input class="password" type="password" placeholder="Test123!" name="password" id="password"/>
                     <div className="login__controls">
                     <input type="checkbox" name="rememberMe" id="rememberMe"/>
                     <label htmlFor="rememberMe">Remember me</label>

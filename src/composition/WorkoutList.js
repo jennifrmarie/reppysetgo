@@ -4,7 +4,6 @@ import AppContext from '../AppContext'
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import moment from 'moment';
-import Moment from 'react-moment'
 import Dashboard from './Dashboard'
 
 
@@ -27,11 +26,10 @@ export default class WorkoutList extends Component {
     if (this.props.dateId) {
       items = items.filter(item => {
         const date = moment(item.date).format("MMDDYYYY")
-        // console.log(item.date, this.props.dateId, date)
-        return date == this.props.dateId
+        return date === this.props.dateId
       })
     }
-    // const dateFormat = moment(item.date).format("MMDDYYYY")
+    
     return (
         <ul className="workout-list">
         {
@@ -41,8 +39,8 @@ export default class WorkoutList extends Component {
           <div className="item-name">
             {item.name}{':  '}
             {item.sets}{' X  '}
-            {item.reps}{'  --  '}
-            {item.weight}{"\n"} 
+            {item.reps}{'  :  '}
+            {item.weight}{"  lbs"}{"\n"} 
             {!<Dashboard
               itemDate= {this.props.match.params.items} />}
           </div>

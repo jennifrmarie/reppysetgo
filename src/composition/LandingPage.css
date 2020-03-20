@@ -5,8 +5,14 @@
     margin-top: 100px;
 }
 
-.login_new_account {
+.account_button {
     margin-top: 90px;
+}
+
+.account_button:hover {
+    cursor: pointer;
+    background-color: #ad4141fb;;
+    color: white;
 }
 
 .login_button {
@@ -15,4 +21,9 @@
     background-color: black;
     color: white;
     padding: 10px;
+}
+
+.login_button:hover {
+    cursor: pointer;
+    background-color: #ad4141fb;
 }

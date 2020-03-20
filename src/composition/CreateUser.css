@@ -58,3 +58,7 @@
     background-color: white;
     padding: 5px;
 }
+
+.account_button:hover {
+    cursor: pointer;
+}

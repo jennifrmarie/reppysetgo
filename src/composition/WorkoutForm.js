@@ -79,7 +79,7 @@ class WorkoutForm extends Component {
             }
             console.log(this.context.date)
             this.context.addItem(item)
-            // .then(data => this.props.history.push(`/add-workout/${item.id}`))
+           
         }
         
        
@@ -128,31 +128,57 @@ class WorkoutForm extends Component {
                     <label htmlFor='workout-name-input'>
                         LIFT:
                     </label>
-                    <input className="form-box1" type="text" align="right" value={this.state.name}
-                        onChange={this.handleNameChange.bind(this)} name="Workout" />{' '} 
+                    <input 
+                        className="form-box1"  
+                        type="text" 
+                        value={this.state.name}
+                        placeholder="e.g. deadlift" 
+                        required 
+                        onChange={this.handleNameChange.bind(this)} 
+                        name="Workout" />{' '} 
                     </div>
                     <div>
                     <label htmlFor='workout-set-input'>
                         SETS:
                     </label>
-                    <input className="form-box2" type="text" align="right" value={this.state.sets}
-                        onChange={this.handleSetChange.bind(this)} />{' '}
+                    <input className="form-box2" 
+                        type="text" align="right" 
+                        value={this.state.sets}
+                        placeholder="e.g. 3" required 
+                        onChange={this.handleSetChange.bind(this)} 
+                    />{' '}
                     </div>
                     <div>
                     <label htmlFor='workout-reps-input'>
                         REPS:
                     </label>
-                    <input className="form-box3" type="text" align="right" value={this.state.reps}
-                        onChange={this.handleRepChange.bind(this)} />{' '}
+                    <input className="form-box3" 
+                        type="text" align="right" 
+                        value={this.state.reps}
+                        placeholder="e.g. 5" 
+                        required 
+                        onChange={this.handleRepChange.bind(this)} 
+                    />{' '}
                     </div>
                     <div>
                     <label htmlFor='workout-weight-input'>
                         WEIGHT:
                     </label>
-                    <input className="form-box4" type="text" align="right" value={this.state.weight}
-                        onChange={this.handleWeightChange.bind(this)} />{' '}
+                    <input className="form-box4" 
+                        type="text" align="right" 
+                        value={this.state.weight}
+                        placeholder="e.g. 135" 
+                        required 
+                        onChange={this.handleWeightChange.bind(this)} 
+                    />
                     </div>
-                    <button tag='a' className="submit-button" onClick={this.handleSubmit}>Submit</button>
+                    <button 
+                        tag='a' 
+                        className="submit-button" 
+                        onClick={this.handleSubmit}
+                    >
+                        Submit
+                    </button>
 
                     </form>
                 <WorkoutList

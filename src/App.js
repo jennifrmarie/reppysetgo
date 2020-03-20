@@ -1,5 +1,6 @@
 import React from 'react';
 import './App.css';
+import config from './config'
 import AppContext from './AppContext'
 import Dashboard from './composition/Dashboard'
 import { Route } from 'react-router-dom';
@@ -21,7 +22,7 @@ export default class App extends React.Component {
   }
 
   addItem = (data) => {
-    return fetch('http://localhost:8000/api/workouts', {
+    return fetch(`${config.API_ENDPOINT}/workouts`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
@@ -85,7 +86,6 @@ export default class App extends React.Component {
   }
 
   handleDateClicked = (index) => {
-    // const index = e.target.getAttribute("data-index")
     let dates = this.state.selectedDays
     let date = dates[index]
     this.setState({

@@ -35,9 +35,8 @@ export default class LandingPage extends Component {
       const password = e.target.password.value
       const data = { user_name, password }
       
-      fetch(`${config.API_ENDPOINT}api/auth/login`, {
+      fetch(`http://localhost:8000/api/auth/login`, {
           method: 'post',
-          mode: 'cors',
           headers: {
               "content-type": "application/json",
           },

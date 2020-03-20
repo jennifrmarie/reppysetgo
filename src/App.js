@@ -22,9 +22,8 @@ export default class App extends React.Component {
   }
 
   addItem = (data) => {
-    return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts`, {
+    return fetch('https://boiling-ridge-17775.herokuapp.com/api/workouts', {
             method: 'post',
-            mode: 'no-cors',
             headers: {
                 'content-type': 'application/json',
                 "Authorization": `Bearer ${localStorage.authToken}`,
@@ -67,7 +66,6 @@ export default class App extends React.Component {
   editItem = (item) => {
       return fetch(`https://boiling-ridge-17775.herokuapp.com/api/${item.id}`, {
               method: 'put',
-              mode: 'no-cors',
               headers: {
                   'content-type': 'application/json',
                   "Authorization": `Bearer ${localStorage.authToken}`,

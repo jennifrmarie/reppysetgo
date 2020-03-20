@@ -10,7 +10,6 @@ export default class CreateUser extends Component {
         const password = e.target.password.value
         const data = { user_name, password }
         fetch(`https://boiling-ridge-17775.herokuapp.com/api/users`, {
-            mode: 'no-cors',
             method: 'post',
             headers: {
                 "content-type": "application/json"

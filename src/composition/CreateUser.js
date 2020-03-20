@@ -9,7 +9,7 @@ export default class CreateUser extends Component {
         const user_name = e.target.user_name.value
         const password = e.target.password.value
         const data = { user_name, password }
-        fetch(`${config.API_ENDPOINT}api/auth/login`, {
+        fetch(`${config.API_ENDPOINT}api/users`, {
             mode: 'no-cors',
             method: 'post',
             headers: {

@@ -126,7 +126,7 @@ export default class App extends React.Component {
 
   getItems = () => {
     return fetch(`${config.API_ENDPOINT}api/workouts/`, {
-      mode: 'no-cors',
+      mode: 'cors',
       method: 'get',
       headers: {
           'content-type': 'application/json',

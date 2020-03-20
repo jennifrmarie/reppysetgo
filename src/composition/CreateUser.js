@@ -8,7 +8,7 @@ export default class CreateUser extends Component {
         const user_name = e.target.user_name.value
         const password = e.target.password.value
         const data = { user_name, password }
-        fetch('http://localhost:8000/api/users', {
+        fetch(`${config.API_ENDPOINT}/api/users`, {
             method: 'post',
             headers: {
                 "content-type": "application/json"

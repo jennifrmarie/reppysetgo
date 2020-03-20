@@ -1,4 +1,3 @@
 export default {
-    API_ENDPOINT: 'http://localhost:8000/api',
-    // TOKEN_KEY: 'reppy-client-auth-token',
+    API_ENDPOINT: 'https://boiling-ridge-17775.herokuapp.com',
   }

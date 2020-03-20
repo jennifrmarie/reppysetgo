@@ -21,6 +21,7 @@
     "react-scripts": "3.4.0"
   },
   "scripts": {
+    "deploy": "git push heroku master",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -47,7 +47,7 @@ export default class App extends React.Component {
   }
 
   removeItem = (itemId) => {
-    return fetch(`https://boiling-ridge-17775.herokuapp.com/api/${itemId}`, {
+    return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/${itemId}`, {
             method: 'delete',
             headers: {
                 "Authorization": `Bearer ${localStorage.authToken}`,
@@ -64,7 +64,7 @@ export default class App extends React.Component {
   }
 
   editItem = (item) => {
-      return fetch(`https://boiling-ridge-17775.herokuapp.com/api/${item.id}`, {
+      return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/${item.id}`, {
               method: 'put',
               headers: {
                   'content-type': 'application/json',

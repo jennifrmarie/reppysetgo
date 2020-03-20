@@ -22,7 +22,7 @@ export default class App extends React.Component {
   }
 
   addItem = (data) => {
-    return fetch(`${config.API_ENDPOINT}api/workouts`, {
+    return fetch(`http://localhost:8000/api/workouts`, {
             method: 'post',
             mode: 'no-cors',
             headers: {
@@ -125,7 +125,7 @@ export default class App extends React.Component {
   }
 
   getItems = () => {
-    return fetch(`${config.API_ENDPOINT}api/workouts/`, {
+    return fetch(`httppi/workouts/`, {
       mode: 'cors',
       method: 'get',
       headers: {

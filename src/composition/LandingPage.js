@@ -37,6 +37,7 @@ export default class LandingPage extends Component {
       
       fetch(`http://localhost:8000/api/auth/login`, {
           method: 'post',
+          mode: 'no-cors',
           headers: {
               "content-type": "application/json",
           },

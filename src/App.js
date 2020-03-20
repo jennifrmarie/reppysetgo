@@ -24,7 +24,7 @@ export default class App extends React.Component {
   addItem = (data) => {
     return fetch(`${config.API_ENDPOINT}api/workouts`, {
             method: 'post',
-            mode: 'cors',
+            mode: 'no-cors',
             headers: {
                 'content-type': 'application/json',
                 "Authorization": `Bearer ${localStorage.authToken}`,
@@ -67,6 +67,7 @@ export default class App extends React.Component {
   editItem = (item) => {
       return fetch(`api/${item.id}`, {
               method: 'put',
+              mode: 'no-cors',
               headers: {
                   'content-type': 'application/json',
                   "Authorization": `Bearer ${localStorage.authToken}`,
@@ -125,6 +126,7 @@ export default class App extends React.Component {
 
   getItems = () => {
     return fetch(`${config.API_ENDPOINT}api/workouts/`, {
+      mode: 'no-cors',
       method: 'get',
       headers: {
           'content-type': 'application/json',

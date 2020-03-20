@@ -22,8 +22,9 @@ export default class App extends React.Component {
   }
 
   addItem = (data) => {
-    return fetch(`${config.API_ENDPOINT}/api/workouts`, {
+    return fetch(`api/workouts`, {
             method: 'post',
+            mode: 'cors',
             headers: {
                 'content-type': 'application/json',
                 "Authorization": `Bearer ${localStorage.authToken}`,
@@ -47,7 +48,7 @@ export default class App extends React.Component {
   }
 
   removeItem = (itemId) => {
-    return fetch(`${config.API_ENDPOINT}/api/${itemId}`, {
+    return fetch(`api/${itemId}`, {
             method: 'delete',
             headers: {
                 "Authorization": `Bearer ${localStorage.authToken}`,
@@ -64,7 +65,7 @@ export default class App extends React.Component {
   }
 
   editItem = (item) => {
-      return fetch(`${config.API_ENDPOINT}/api/${item.id}`, {
+      return fetch(`api/${item.id}`, {
               method: 'put',
               headers: {
                   'content-type': 'application/json',
@@ -123,7 +124,7 @@ export default class App extends React.Component {
   }
 
   getItems = () => {
-    return fetch(`${config.API_ENDPOINT}/api/workouts/`, {
+    return fetch(`/api/workouts/`, {
       method: 'get',
       headers: {
           'content-type': 'application/json',

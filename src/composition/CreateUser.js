@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './CreateUser.css'
+import config from '../config'
 
 export default class CreateUser extends Component {
 
@@ -8,7 +9,8 @@ export default class CreateUser extends Component {
         const user_name = e.target.user_name.value
         const password = e.target.password.value
         const data = { user_name, password }
-        fetch(`${config.API_ENDPOINT}/api/users`, {
+        fetch(`api/users`, {
+            mode: 'cors',
             method: 'post',
             headers: {
                 "content-type": "application/json"

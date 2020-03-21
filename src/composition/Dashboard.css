@@ -18,11 +18,23 @@
 }
 
 .li-date {
-    font-size: 20px;
+    align-self: center;
+    display: flex;
     letter-spacing: .3em;
-    color: white;
+    color: white; 
+    font-size: 17px;
+    font-weight: 5px;
+    padding: 20px;
+    /* border-radius: 5em; */
     background-color: black;
-    border: 3px solid #ece8e8fb;
+    /* border: 3px solid #ece8e8fb;  */
+    -webkit-box-shadow: 0px 6px 0px #36424b;
+-moz-box-shadow: 0px 6px 0px #36424b;
+box-shadow: 0px 6px 0px #36424b;
+}
+.li-date:hover {
+    cursor: pointer;
+    transform: scale(1.2) perspective(1px)
 }
 .logo__dashboard {
     background-image: url('https://i.imgur.com/jBMcwAH.png');
@@ -73,6 +85,10 @@
     padding-right:20px ;
     align-self: center;
     padding-right: 50px;
+}
+
+.fa-chevron-down > path:hover {
+    transform: scale(1.5) perspective(1px)
 }
 
 .fa-edit > path {
@@ -144,6 +160,8 @@
 
 .dashboard__background {
     min-height: 100vh;
+    /* min-width: 100vh; */
+
     background-image: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
     background-size: cover;
     background-repeat: no-repeat;
@@ -160,7 +178,13 @@
 @media only screen and (max-width: 900px) {
     .dashboard__list {
         display: flex;
-        flex-direction: column;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+    }
+    .dashboard__date {
+        margin: auto;
+        
     }
 
     .logo__dashboard {
@@ -168,10 +192,10 @@
     }
     .dashboard__workout {
         display: flex;
-        font-size: 15px;
+        font-size: 12px;
         flex-direction: row;
         flex-shrink: 1;
-        width: 100%;
+        width: 80%;
     }
     .nav_buttons {
         margin-right: auto;

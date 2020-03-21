@@ -7,6 +7,7 @@ import AppContext from '../AppContext'
 import './Dashboard.css'
 import WorkoutForm from './WorkoutForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 export default class Dashboard extends Component {
   constructor(props) {
@@ -64,12 +65,13 @@ render() {
     const dateid = moment(date).format('MMDDYYYY')
 
     const SingleDate = (index) => (
-      <div key={index} 
+      <button key={index} 
         className='li-date' 
         onClick={() => this.props.history.push(`/add-workout/${dateid}`)}
       >
+        {/* <FontAwesomeIcon icon="plus-circle" size="lg"></FontAwesomeIcon> */}
         {moment(date).format('MMM Do, YYYY')}
-      </div>
+      </button>
     )
 
     let items = this.context.items
@@ -88,9 +90,11 @@ render() {
             modifiers={modifiers}
             modifiersStyles={modifiersStyles}
           />
+          <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon>
         </div>
+        <SingleDate />
         </div>
-      <SingleDate />
+      
       <ul className="dashboard__list">
         {
           items.map((item, index) => 

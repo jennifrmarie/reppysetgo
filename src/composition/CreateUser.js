@@ -16,11 +16,18 @@ export default class CreateUser extends Component {
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
+        .then(res => {
+            if (!res.ok)
+              return res.json().then(e => Promise.reject(e))
+              return res.json()
+          })
         .then(data => {
             console.log(data)
             this.props.history.push('/')
         })
+        .catch(error => {
+            console.error({ error })            
+          })
     }
 
 

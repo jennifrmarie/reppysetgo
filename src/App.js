@@ -31,8 +31,11 @@ export default class App extends React.Component {
             
             body: JSON.stringify(data)
         })
-        .then(res => 
-            res.json())
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+            return res.json()
+        })
         .then(data => {
             this.setState({
               items: [
@@ -40,11 +43,14 @@ export default class App extends React.Component {
                 data
               ]
             })
-            console.log(data)
+          })
+        .catch(error => {
+          console.error({ error })
             
         })
+      }
    
-  }
+  
 
   removeItem = (itemId) => {
     return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/${itemId}`, {
@@ -53,15 +59,20 @@ export default class App extends React.Component {
                 "Authorization": `Bearer ${localStorage.authToken}`,
             },
         })
+        .then(res => {
+          if (!res.ok)
+            return res.json().then(e => Promise.reject(e))
+            return res.json()
+        })
         .then(data => {
           this.setState({
             items: this.state.items.filter(item => item.id !== itemId)
           })
-            console.log(data)
-            
         })
-    
-  }
+          .catch(error => {
+            console.error({ error })         
+        })   
+    }
 
   editItem = (item) => {
       return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/${item.id}`, {
@@ -73,15 +84,22 @@ export default class App extends React.Component {
               
               body: JSON.stringify(item)
           })
-          .then(res => 
-              res.json())
+          .then(res => {
+            if (!res.ok)
+              return res.json().then(e => Promise.reject(e))
+              return res.json()
+          })
           .then(data => {
             this.setState({
               items: this.state.items.map(i => i.id === item.id ? item : i)
             })
-              console.log(data)
-              
+            this.props.history.push('/add-workout')
           })
+           .catch(error => {
+             console.error({ error })
+           })
+              
+          
 
   }
 
@@ -129,16 +147,21 @@ export default class App extends React.Component {
           'content-type': 'application/json',
           "Authorization": `Bearer ${localStorage.authToken}`,
       },
-  })
-  .then(res => 
-      res.json())
-  .then(items => {
-    
-    this.setState({
-      items
     })
-      
-  })
+    .then(res => {
+      if (!res.ok)
+        return res.json().then(e => Promise.reject(e))
+        return res.json()
+    })
+    .then(items => {   
+      this.setState({
+        items
+    })
+    })
+    .catch(error => {
+      console.error({ error })
+    })   
+    
   }
 
 

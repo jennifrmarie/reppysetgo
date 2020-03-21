@@ -142,9 +142,11 @@ class WorkoutForm extends Component {
                         SETS:
                     </label>
                     <input className="form-box2" 
-                        type="text" align="right" 
+                        type="number" 
+                        pattern="[0-9]*" 
+                        inputmode="numeric"
                         value={this.state.sets}
-                        placeholder="e.g. 3" required 
+                        required 
                         onChange={this.handleSetChange.bind(this)} 
                     />{' '}
                     </div>
@@ -153,9 +155,10 @@ class WorkoutForm extends Component {
                         REPS:
                     </label>
                     <input className="form-box3" 
-                        type="text" align="right" 
+                        type="number" 
+                        pattern="[0-9]*" 
+                        inputmode="numeric"
                         value={this.state.reps}
-                        placeholder="e.g. 5" 
                         required 
                         onChange={this.handleRepChange.bind(this)} 
                     />{' '}
@@ -165,9 +168,10 @@ class WorkoutForm extends Component {
                         WEIGHT:
                     </label>
                     <input className="form-box4" 
-                        type="text" align="right" 
+                        type="number" 
+                        pattern="[0-9]*" 
+                        inputmode="numeric" 
                         value={this.state.weight}
-                        placeholder="e.g. 135" 
                         required 
                         onChange={this.handleWeightChange.bind(this)} 
                     />

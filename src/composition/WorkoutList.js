@@ -4,7 +4,6 @@ import AppContext from '../AppContext'
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import moment from 'moment';
-import Dashboard from './Dashboard'
 
 
 export default class WorkoutList extends Component {
@@ -36,16 +35,17 @@ export default class WorkoutList extends Component {
           items.map((item, index) => 
           
           <li className="exercise-add" key={index}>
+          <Link to={'/edit-workout/' + item.id} tag='button' className="edit__name"><FontAwesomeIcon icon="edit" /></Link>
           <div className="item-name">
-            {item.name}{':  '}
-            {item.sets}{' X  '}
-            {item.reps}{'  :  '}
-            {item.weight}{"  lbs"}{"\n"} 
-            {!<Dashboard
-              itemDate= {this.props.match.params.items} />}
+            
+            <span className="workout_span">{item.name}{':  '}</span>
+            <span className="workout_span">{item.sets}{' X  '}</span>
+            <span className="workout_span">{item.reps}{'  :  '}</span>
+            <span className="workout_span">{item.weight}{"  lbs"}{"\n"}</span>
+            
           </div>
-        <Link to={'/edit-workout/' + item.id} tag='button'><FontAwesomeIcon icon="edit" /></Link>
-        <div className="delete__button" onClick={e => this.context.removeItem(item.id)}><FontAwesomeIcon icon="trash-alt" /></div>
+          <div className="delete__button" onClick={e => this.context.removeItem(item.id)}><FontAwesomeIcon icon="trash-alt" /></div>
+        
           </li>)
         }
       </ul>

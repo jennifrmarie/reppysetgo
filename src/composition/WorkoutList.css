@@ -1,19 +1,30 @@
 .exercise-add {
     background-color: #ece8e8fb;
     color: black;
-    border: 1.2px solid black;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    justify-content: space-between;
     border-radius: .3em;
-    bottom: -200px;
-    left: 100px;
-    width: 40%;
+    box-shadow: 1px 1px 2px black, 0 0 35px rgb(191, 191, 218), 0 0 15px rgb(75, 72, 74);
     margin: 10px;
-    max-width: 500px;
+    flex-basis: fit-content;
+    /* max-width: 500px; */
+    width: 100%;
     padding: 15px;
     list-style: none;
     font-size: 20px;
     clear: both;
 }
 
+.workout_span {
+    color: black;
+    justify-items: auto;
+}
+
+.edit__name {
+    margin-right: 10px;
+}
 .form-box {
     background-color: white;
     margin: 10px;
@@ -28,9 +39,8 @@
     background-color:#ece8e8fb;
     color: black;
     letter-spacing: .1em;
-    text-align: center;
-    /* padding-bottom: 10px; */
-    /* max-width: 600px; */
+    display: flex;
+    justify-content: space-between;
 }
 
 .delete__button {
@@ -43,40 +53,21 @@
 }
 
 .workout-list {
-    width: 55%;
-    position: relative;
-    top: 100px;
-    right: -190px;
-    /* display: flex;
+    display: flex;
     flex-direction: column;
-    position: relative;
-    width: 40%;
-    text-align: center; */
-    /* justify-content: center; */
-    /* align-items: center; */
+    width: 25%;
+    flex-basis: fit-content;
 }
 
 @media only screen and (max-width: 700px) {
 .exercise-add {
-    position: relative;
-    bottom: -50px;
-    /* width: 200px; */
-    /* right: -160px; */
-    margin-left: 50px;
+    width: 100%;
 }
 .workout-list {
-    position: relative;
-    left: -10px;
-    top: -10px;
-    width: 100%;
-    height: 100px;
-    
+    width: 60%;
+    display: flex;
 }
 }
 @media only screen and (max-width: 1000px) and (min-width: 700px) {
-.exercise-add {
-    left: 300px;
-    width: 300px;
-    margin: 10px;
-}
+
 }

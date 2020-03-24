@@ -20,6 +20,10 @@ export default class Dashboard extends Component {
   }
 static contextType = AppContext
 
+componentDidMount() {
+  this.context.getItems()
+}
+
   handleWeekClick = (day, days, e) => {
     this.context.setDays(days)
     this.context.setDay(day)
@@ -41,6 +45,11 @@ static contextType = AppContext
       isEmptyState: false
     })
   }
+
+handleLogout = () => {
+  localStorage.clear()
+  this.props.history.push('/')
+}
 
 render() {
     const { selectedDays } = this.context;
@@ -78,8 +87,12 @@ render() {
 
     return (
       <div className="dashboard__background">
-        <div className="logo__dashboard"></div>
+        <div className="logo__dashboard">
+        <button className="logout_button" onClick={this.handleLogout}>Logout</button>
+        </div>
+        
         <div className="calendar_container">
+        
         <div className="date-section">
           <DayPicker
             showWeekDays
@@ -104,7 +117,7 @@ render() {
                 <span className="sets_reps">{item.sets}{"X"}
                 {item.reps}{''}{":"}{'   '}</span>
                 <span className="workout-weight">{" "}{item.weight}{"  lbs "}</span>
-                <span class="nav_buttons">
+                <span className="nav_buttons">
                 <Link to={'/edit-workout/' + item.id} tag='button' className="edit_button"><FontAwesomeIcon icon="edit" color="black" /></Link>{'  '}
                 <div className="dashboard_delete" onClick={e => this.context.removeItem(item.id)}><FontAwesomeIcon icon="trash-alt" /></div>
               </span>

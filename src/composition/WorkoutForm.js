@@ -52,13 +52,6 @@ class WorkoutForm extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        const data = {
-            name: this.state.name,
-            sets: this.state.sets,
-            reps: this.state.reps,
-            weight: this.state.weight,
-            date: moment(this.props.match.params.dateId)
-        }
   
         if(this.props.match.params.id) {
             const item = this.context.items.find(item => item.id === parseInt(this.props.match.params.id))
@@ -123,7 +116,7 @@ class WorkoutForm extends Component {
         return (
             <div className="workout-box">
                 <nav className="logo__nav"></nav>
-                <form className="workout-form">
+                <form onSubmit={this.handleSubmit} className="workout-form">
                     <div>
                     <label htmlFor='workout-name-input'>
                         LIFT:
@@ -144,7 +137,7 @@ class WorkoutForm extends Component {
                     <input className="form-box2" 
                         type="number" 
                         pattern="[0-9]*" 
-                        inputmode="numeric"
+                        inputMode="numeric"
                         value={this.state.sets}
                         required 
                         onChange={this.handleSetChange.bind(this)} 
@@ -157,7 +150,7 @@ class WorkoutForm extends Component {
                     <input className="form-box3" 
                         type="number" 
                         pattern="[0-9]*" 
-                        inputmode="numeric"
+                        inputMode="numeric"
                         value={this.state.reps}
                         required 
                         onChange={this.handleRepChange.bind(this)} 
@@ -170,7 +163,7 @@ class WorkoutForm extends Component {
                     <input className="form-box4" 
                         type="number" 
                         pattern="[0-9]*" 
-                        inputmode="numeric" 
+                        inputMode="numeric" 
                         value={this.state.weight}
                         required 
                         onChange={this.handleWeightChange.bind(this)} 
@@ -179,7 +172,7 @@ class WorkoutForm extends Component {
                     <button 
                         tag='a' 
                         className="submit-button" 
-                        onClick={this.handleSubmit}
+                        
                     >
                         Submit
                     </button>

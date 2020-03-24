@@ -9,7 +9,7 @@ export default class CreateUser extends Component {
         const user_name = e.target.user_name.value
         const password = e.target.password.value
         const data = { user_name, password }
-        fetch(`https://boiling-ridge-17775.herokuapp.com/api/users`, {
+        fetch(`${config.API_ENDPOINT}/users`, {
             method: 'post',
             headers: {
                 "content-type": "application/json"
@@ -17,7 +17,9 @@ export default class CreateUser extends Component {
             body: JSON.stringify(data)
         })
         .then(res => {
+            console.log(res)
             if (!res.ok)
+            if(!res.ok) 
               return res.json().then(e => Promise.reject(e))
               return res.json()
           })

@@ -22,7 +22,7 @@ export default class App extends React.Component {
   }
 
   addItem = (data) => {
-    return fetch('https://boiling-ridge-17775.herokuapp.com/api/workouts', {
+    return fetch(`${config.API_ENDPOINT}/workouts`, {
             method: 'post',
             headers: {
                 'content-type': 'application/json',
@@ -45,7 +45,7 @@ export default class App extends React.Component {
             })
           })
         .catch(error => {
-          console.error({ error })
+          alert(error.message)
             
         })
       }
@@ -53,7 +53,7 @@ export default class App extends React.Component {
   
 
   removeItem = (itemId) => {
-    return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/${itemId}`, {
+    return fetch(`${config.API_ENDPOINT}/workouts/${itemId}`, {
             method: 'delete',
             headers: {
                 "Authorization": `Bearer ${localStorage.authToken}`,
@@ -69,13 +69,14 @@ export default class App extends React.Component {
             items: this.state.items.filter(item => item.id !== itemId)
           })
         })
-          .catch(error => {
-            console.error({ error })         
-        })   
+        .catch(error => {
+          alert(error.message)
+            
+        })
     }
 
   editItem = (item) => {
-      return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/${item.id}`, {
+      return fetch(`${config.API_ENDPOINT}/workouts/${item.id}`, {
               method: 'put',
               headers: {
                   'content-type': 'application/json',
@@ -95,9 +96,10 @@ export default class App extends React.Component {
             })
             this.props.history.push('/add-workout')
           })
-           .catch(error => {
-             console.error({ error })
-           })
+          .catch(error => {
+            alert(error.message)
+              
+          })
               
           
 
@@ -141,7 +143,7 @@ export default class App extends React.Component {
   }
 
   getItems = () => {
-    return fetch(`https://boiling-ridge-17775.herokuapp.com/api/workouts/`, {
+    return fetch(`${config.API_ENDPOINT}/workouts/`, {
       method: 'get',
       headers: {
           'content-type': 'application/json',
@@ -159,8 +161,9 @@ export default class App extends React.Component {
     })
     })
     .catch(error => {
-      console.error({ error })
-    })   
+      alert(error.message)
+        
+    })
     
   }
 

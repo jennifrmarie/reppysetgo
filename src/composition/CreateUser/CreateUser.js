@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './CreateUser.css'
-import config from '../config'
+import config from '../../config'
 
 export default class CreateUser extends Component {
 

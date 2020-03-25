@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<form
+  onSubmit={[Function]}
+>
+  <div
+    className="logo__login"
+  />
+  <div
+    className="login__form__credentials"
+  >
+    <h3
+      className="login__header"
+    >
+      Log In!
+    </h3>
+    <input
+      className="username"
+      id="user_name"
+      name="user_name"
+      placeholder="guest"
+      required={true}
+      type="text"
+    />
+    <input
+      className="password"
+      id="password"
+      name="password"
+      placeholder="Test123!"
+      required={true}
+      type="password"
+    />
+    <div
+      className="login__controls"
+    >
+      <input
+        id="rememberMe"
+        name="rememberMe"
+        type="checkbox"
+      />
+      <label
+        htmlFor="rememberMe"
+      >
+        Remember me
+      </label>
+    </div>
+    <button
+      className="login_button"
+    />
+    <div
+      className="login_new_account"
+    >
+      <button
+        className="account_button"
+        onClick={[Function]}
+      >
+        Create a New Account
+      </button>
+    </div>
+  </div>
+</form>
+`;

@@ -2,11 +2,11 @@ import React from 'react';
 import './App.css';
 import config from './config'
 import AppContext from './AppContext'
-import Dashboard from './composition/Dashboard'
+import Dashboard from './composition/Dashboard/Dashboard'
 import { Route } from 'react-router-dom';
-import LandingPage from './composition/LandingPage'
-import WorkoutForm from './composition/WorkoutForm'
-import CreateUser from './composition/CreateUser'
+import LandingPage from './composition/LandingPage/LandingPage'
+import WorkoutForm from './composition/WorkoutForm/WorkoutForm'
+import CreateUser from './composition/CreateUser/CreateUser.js'
 
 
 export default class App extends React.Component {
@@ -199,6 +199,9 @@ export default class App extends React.Component {
     )
   }
 
+
+
+
   render() {
     const value = {
       items: this.state.items,
@@ -220,7 +223,7 @@ export default class App extends React.Component {
       <AppContext.Provider value={value}>
         <div className="App">
           <nav className='App__nav'>
-
+          
           </nav>
             <header className='App__header'>
             </header>

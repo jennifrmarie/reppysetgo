@@ -28,6 +28,10 @@ h1 {
   color: white;
 }
 
+.App__nav {
+  background-color: black;
+}
+
 
 .box {
   display: flex;

@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders the UI as expected 1`] = `
+<div
+  className="workout-box"
+>
+  <nav
+    className="logo__nav"
+  />
+  <form
+    className="workout-form"
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        htmlFor="workout-name-input"
+      >
+        LIFT:
+      </label>
+      <input
+        className="form-box1"
+        name="Workout"
+        onChange={[Function]}
+        placeholder="e.g. deadlift"
+        required={true}
+        type="text"
+        value=""
+      />
+       
+    </div>
+    <div>
+      <label
+        htmlFor="workout-set-input"
+      >
+        SETS:
+      </label>
+      <input
+        className="form-box2"
+        inputMode="numeric"
+        onChange={[Function]}
+        pattern="[0-9]*"
+        required={true}
+        type="number"
+        value=""
+      />
+       
+    </div>
+    <div>
+      <label
+        htmlFor="workout-reps-input"
+      >
+        REPS:
+      </label>
+      <input
+        className="form-box3"
+        inputMode="numeric"
+        onChange={[Function]}
+        pattern="[0-9]*"
+        required={true}
+        type="number"
+        value=""
+      />
+       
+    </div>
+    <div>
+      <label
+        htmlFor="workout-weight-input"
+      >
+        WEIGHT:
+      </label>
+      <input
+        className="form-box4"
+        inputMode="numeric"
+        onChange={[Function]}
+        pattern="[0-9]*"
+        required={true}
+        type="number"
+        value=""
+      />
+    </div>
+    <button
+      className="submit-button"
+      tag="a"
+    >
+      Submit
+    </button>
+  </form>
+  <ul
+    className="workout-list"
+  />
+  <button
+    className="NavButton NotePage__back-button"
+    onClick={[Function]}
+    role="link"
+  />
+</div>
+`;

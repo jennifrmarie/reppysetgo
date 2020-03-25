@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import AppContext from '../AppContext'
+import AppContext from '../../AppContext'
 import uuid from 'uuid'
-import WorkoutList from './WorkoutList'
+import WorkoutList from '../WorkoutList/WorkoutList'
 import './WorkoutForm.css'
-import NavButton from './NavButton'
-import { withRouter } from 'react-router-dom'
-import config from '../config'
+import NavButton from '../NavButton'
+import config from '../../config'
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
  
@@ -194,4 +193,4 @@ class WorkoutForm extends Component {
     }
 }
 
-export default withRouter(WorkoutForm)
+export default WorkoutForm

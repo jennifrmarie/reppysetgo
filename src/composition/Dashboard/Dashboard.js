@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import moment from 'moment';
-import AppContext from '../AppContext'
+import AppContext from '../../AppContext'
 import './Dashboard.css'
-import WorkoutForm from './WorkoutForm';
+import WorkoutForm from '../WorkoutForm/WorkoutForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -46,10 +46,11 @@ componentDidMount() {
     })
   }
 
-handleLogout = () => {
-  localStorage.clear()
-  this.props.history.push('/')
-}
+  handleLogout = () => {
+    localStorage.clear()
+    this.props.history.push('/')
+  }
+
 
 render() {
     const { selectedDays } = this.context;
@@ -87,12 +88,13 @@ render() {
     return (
       <div className="dashboard__background">
         <div className="logo__dashboard">
-        <button className="logout_button" onClick={this.handleLogout}>Logout</button>
+        <nav><button className="logout_button" onClick={this.handleLogout}>Logout</button></nav>
         </div>
         
         <div className="calendar_container">
         
         <div className="date-section">
+          
           <DayPicker
             showWeekDays
             className="Selectable"

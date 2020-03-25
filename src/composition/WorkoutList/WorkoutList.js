@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import './WorkoutList.css'
-import AppContext from '../AppContext'
+import AppContext from '../../AppContext'
 import React, { Component } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import moment from 'moment';

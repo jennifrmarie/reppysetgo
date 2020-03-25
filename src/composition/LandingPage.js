@@ -44,19 +44,21 @@ export default class LandingPage extends Component {
 
           body: JSON.stringify(data)
       })
-      .then(res => {
-        if (!res.ok)
-          return res.json().then(e => Promise.reject(e))
-          return res.json()
+      .then((res) => {
+        if(!res.ok) {
+          throw new Error(window.alert('incorrect username/password'))
+          
+        }
+        return res.json();
       })
       .then(data => {
           localStorage.authToken = data.authToken;
           this.props.history.push('/dashboard')
       })
-      .catch(error => {
-        alert(error.message)
-    })
-  }
+      .catch((error) => {
+          console.error('Error')
+      })
+    }
 
     handleCreateAccount = (e) => {
       e.preventDefault()

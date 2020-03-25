@@ -2,10 +2,12 @@
     z-index: 1;
     position: relative;
     padding: 50px;
-    min-height: 400px;
+    /* min-height: 400px; */
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: calc(100vw * (9/16));
+  max-height: calc(60em * (9/16));
 
 }
 
@@ -17,11 +19,10 @@
     left: 0;
     right: 0;
     width: 100%;
-    height: 100%;
+    /* height: 100vh; */
     background: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
     opacity: .5;
     background-size: cover;
-    min-height: 800px;
     z-index: -1;
 }
 
@@ -40,13 +41,13 @@
 }
 .logo__login {
     background-image: url('https://i.imgur.com/ZTJ52z4.png');
-    background-size: cover;
+    background-size: 70%;
 
     background-color: #ece8e8fb;
     background-position: center;
     font-size: 20px;
     position: relative;
-    min-height: 400px;
+    height: 350px;
     max-width: 100%;
     background-repeat: no-repeat;
 }
@@ -61,4 +62,19 @@
 
 .account_button:hover {
     cursor: pointer;
+}
+
+@media only screen and (max-width: 900px) {
+    .logo__login {
+        background-size: 100%;
+        height: 200px;
+    }
+
+    .login__header {
+        font-size: 25px;
+    }
+
+    .login__form__credentials {
+        height: 100vh;
+    }
 }

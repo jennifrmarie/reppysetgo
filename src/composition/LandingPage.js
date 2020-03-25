@@ -32,7 +32,7 @@ export default class LandingPage extends Component {
 
     handleSubmit = (e) => {
       e.preventDefault()
-      const user_name = e.target.user_name.value
+      const user_name = e.target.user_name.value.toLowerCase();
       const password = e.target.password.value
       const data = { user_name, password }
       

@@ -46,13 +46,16 @@ export default class CreateUser extends Component {
                         placeholder="Username" 
                          name="user_name" 
                          id="user_name" 
+                        required
                     />
+                    {/* <span className="password_req">At least 6 characters, one capital letter, one lowercase letter, and special character</span> */}
                     <input 
                         className="password" 
                         type="password" 
                         placeholder="Password"
                         name="password" 
-                        id="password" 
+                        id="password"
+                        required 
                     />
                     <input 
                         className="password" 
@@ -60,6 +63,7 @@ export default class CreateUser extends Component {
                         placeholder="Re-enter Password"
                         name="passwordconfirm" 
                         id="passwordconfirm" 
+                        required
                     />
                     <button 
                         className="account_button"

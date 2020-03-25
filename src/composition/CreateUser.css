@@ -10,6 +10,10 @@
 
 }
 
+.password_req {
+    font-size: 10px;
+}
+
 .login__form__credentials:before {
     content: "";
     position: absolute;

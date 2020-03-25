@@ -6,7 +6,7 @@
 An app where a user can create an account and keep track of their
 workouts past and present. The user can click on a specific date which then directs them 
 to a form where they can log in a workout that they already did or one that they wish to do 
-at a future date and can either delete or edit the details later.
+at a future date and can either delete or edit the details later. <br />
 **ReactJS, NodeJS, Postgresql, CSS**
 
 <img src="https://user-images.githubusercontent.com/53023612/77572179-e8f0ab80-6ea4-11ea-857c-65548d96a7e8.png"/>

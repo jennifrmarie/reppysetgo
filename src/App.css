@@ -5,7 +5,6 @@ html, body {
 
 .App__main {
   background-color: black;
-  /* background: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260'); */
   background-size: cover;
   display: flex;
   overflow: hidden;
@@ -15,7 +14,6 @@ html, body {
 .date-section {
   background-color: black;
   width: 100%;
-  /* min-height: 1000vh; */
 }
 
 h1 {

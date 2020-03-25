@@ -78,7 +78,6 @@ render() {
         className='li-date' 
         onClick={() => this.props.history.push(`/add-workout/${dateid}`)}
       >
-        {/* <FontAwesomeIcon icon="plus-circle" size="lg"></FontAwesomeIcon> */}
         {moment(date).format('MMM Do, YYYY')}
       </button>
     )

@@ -9,7 +9,6 @@
     box-shadow: 1px 1px 2px black, 0 0 35px rgb(191, 191, 218), 0 0 15px rgb(75, 72, 74);
     margin: 10px;
     flex-basis: fit-content;
-    /* max-width: 500px; */
     width: 100%;
     padding: 15px;
     list-style: none;

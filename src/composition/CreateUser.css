@@ -2,7 +2,6 @@
     z-index: 1;
     position: relative;
     padding: 50px;
-    /* min-height: 400px; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -19,7 +18,6 @@
     left: 0;
     right: 0;
     width: 100%;
-    /* height: 100vh; */
     background: url('https://images.pexels.com/photos/669576/pexels-photo-669576.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
     opacity: .5;
     background-size: cover;
@@ -29,7 +27,6 @@
 .login__header {
     font-family: 'Open Sans Condensed', sans-serif;
     color: white;
-    /* letter-spacing: .5em; */
     font-size: 40px;
     text-align: center;
 }

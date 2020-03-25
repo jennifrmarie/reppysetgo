@@ -161,7 +161,7 @@ export default class App extends React.Component {
     })
     })
     .catch(error => {
-      alert(error.message)
+      console.log('error')
         
     })
     

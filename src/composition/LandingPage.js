@@ -53,9 +53,7 @@ export default class LandingPage extends Component {
           localStorage.authToken = data.authToken;
           this.props.history.push('/dashboard')
       })
-      .catch((error) => {
-          console.error('Error')
-      })
+      .catch(err => alert('Incorrect username or password'))
     }
 
     handleCreateAccount = (e) => {
@@ -69,8 +67,20 @@ export default class LandingPage extends Component {
               <div className="logo__login"></div>
                 <div className="login__form__credentials">
                 <h3 className="login__header">Log In!</h3>
-                  <input className="username" type="text" placeholder="guest" name="user_name" id="user_name"/>
-                  <input className="password" type="password" placeholder="Test123!" name="password" id="password"/>
+                  <input 
+                    className="username" 
+                    type="text" 
+                    placeholder="guest" 
+                    name="user_name" 
+                    id="user_name"
+                    required />
+                  <input 
+                    className="password" 
+                    type="password" 
+                    placeholder="Test123!" 
+                    name="password" 
+                    id="password"
+                    required />
                     <div className="login__controls">
                     <input type="checkbox" name="rememberMe" id="rememberMe"/>
                     <label htmlFor="rememberMe">Remember me</label>

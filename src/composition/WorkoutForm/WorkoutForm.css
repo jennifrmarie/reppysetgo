@@ -29,17 +29,18 @@
 .NotePage__back-button:hover {
     cursor: pointer;
 }
+
+
 .workout-form {
-    padding: 20px;
+    padding: 50px;
     background-color: black;
     justify-content: space-evenly;
     border: 2px solid white;
     margin-top: 50px;
+    line-height: 2em;
     flex-direction: column;
     display: flex;
-    width: 25%;
     height: 100%;
-    padding-top: 20px;
     text-align: center;
     font-size: 20px;
     font-weight: bold;
@@ -47,30 +48,25 @@
 }
 
 .form-box1, .form-box2, .form-box3, .form-box4 {
-    clear: both;
-    margin: 10px;
-    height: 40px;
-    max-height: 20px;
     border: 5px solid black;
     color: black;
     font-size: 15px;
-    max-width: 160px;
-    margin-right: 10px;
+    float: right;
 }
 
 .form-box2, .form-box3, .form-box4 {
     width: 60px;
     align-self: center;
-
 }
 
 .form-box1 {
     width: 150px;
-    min-width: 50px
+    min-width: 50px;
 }
 
+
 .workout-name-input {
-    margin: 10px;
+    text-align: left;
 }
 
 .submit-button {
@@ -122,9 +118,6 @@
 
     .form-box1, .form-box2, .form-box3, .form-box4 {
         font-size: 15px;
-    }
-    .form-box1 {
-        width: 80px;
     }
 }
 

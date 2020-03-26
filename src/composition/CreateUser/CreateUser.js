@@ -28,7 +28,6 @@ export default class CreateUser extends Component {
               return res.json()
           })
         .then(data => {
-            console.log(data)
             this.props.history.push('/')
         })
         .catch(error => {

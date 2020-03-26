@@ -94,7 +94,6 @@ export default class App extends React.Component {
             this.setState({
               items: this.state.items.map(i => i.id === item.id ? item : i)
             })
-            this.props.history.push('/add-workout')
           })
           .catch(error => {
             alert(error.message)

@@ -59,7 +59,9 @@ class WorkoutForm extends Component {
             item.reps = this.state.reps;
             item.weight = this.state.weight;
             this.context.editItem(item)
-
+            .then(data => {
+                this.props.history.push('/dashboard')
+            })
         } else {
             const item = {
                 id: uuid(),
@@ -177,9 +179,12 @@ class WorkoutForm extends Component {
                     </button>
 
                     </form>
-                <WorkoutList
-                    dateId={this.props.match.params.dateId}
-                />
+                    {this.props.match.params.id ? "": (
+                        <WorkoutList
+                        dateId={this.props.match.params.dateId}
+                    />
+                    )} 
+                
                 <NavButton
                     tag='button'
                     role='link'

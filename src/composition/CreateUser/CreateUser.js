@@ -4,21 +4,25 @@ import config from '../../config'
 
 export default class CreateUser extends Component {
 
+
+
     onSubmit = (e) => {
         e.preventDefault()
         const user_name = e.target.user_name.value
         const password = e.target.password.value
         const data = { user_name, password }
+
+
         fetch(`${config.API_ENDPOINT}/users`, {
             method: 'post',
             headers: {
                 "content-type": "application/json"
             },
             body: JSON.stringify(data)
+            
         })
         .then(res => {
-            console.log(res)
-            if (!res.ok)
+            console.log(data.password)
             if(!res.ok) 
               return res.json().then(e => Promise.reject(e))
               return res.json()
@@ -28,7 +32,7 @@ export default class CreateUser extends Component {
             this.props.history.push('/')
         })
         .catch(error => {
-            console.error({ error })            
+            alert(JSON.stringify(error))          
           })
     }
 

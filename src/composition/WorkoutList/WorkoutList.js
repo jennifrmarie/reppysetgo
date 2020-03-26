@@ -38,8 +38,8 @@ export default class WorkoutList extends Component {
           <Link to={'/edit-workout/' + item.id} tag='button' className="edit__name"><FontAwesomeIcon icon="edit" /></Link>
           <div className="item-name">
             
-            <span className="workout_span">{item.name}{':  '}</span>
-            <span className="workout_span">{item.sets}{' X  '}</span>
+            <span className="workout_span">{item.name}{':'}</span>
+            <span className="workout_span">{item.sets}{' X '}</span>
             <span className="workout_span">{item.reps}{'  :  '}</span>
             <span className="workout_span">{item.weight}{"  lbs"}{"\n"}</span>
             

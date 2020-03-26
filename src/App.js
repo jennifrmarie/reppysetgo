@@ -45,7 +45,7 @@ export default class App extends React.Component {
             })
           })
         .catch(error => {
-          alert(error.message)
+          alert(JSON.stringify(error)) 
             
         })
       }
@@ -70,7 +70,7 @@ export default class App extends React.Component {
           })
         })
         .catch(error => {
-          alert(error.message)
+          alert(JSON.stringify(error)) 
             
         })
     }
@@ -161,7 +161,7 @@ export default class App extends React.Component {
     })
     })
     .catch(error => {
-      console.log('error')
+      console.log({ error })
         
     })
     

@@ -66,7 +66,7 @@ export default class LandingPage extends Component {
               <form onSubmit={this.handleSubmit}>
               <div className="logo__login"></div>
                 <div className="login__form__credentials">
-                <h3 className="login__header">Log In!</h3>
+                <h3 className="login__header">Already have an account?</h3>
                   <input 
                     className="username" 
                     type="text" 
@@ -85,7 +85,8 @@ export default class LandingPage extends Component {
                     <input type="checkbox" name="rememberMe" id="rememberMe"/>
                     <label htmlFor="rememberMe">Remember me</label>
                     </div>
-                  <button className="login_button"><FontAwesomeIcon icon="dumbbell"></FontAwesomeIcon></button>
+                  <button className="login_button">Log In{' '}<FontAwesomeIcon icon="dumbbell"></FontAwesomeIcon></button>
+                  <span className="or">-OR-</span>
                   <div className="login_new_account">
                   <button className="account_button" onClick={this.handleCreateAccount}>Create a New Account</button>
                   </div>

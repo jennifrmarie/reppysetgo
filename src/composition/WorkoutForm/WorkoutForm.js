@@ -119,7 +119,7 @@ class WorkoutForm extends Component {
                 <nav className="logo__nav"></nav>
                 <form onSubmit={this.handleSubmit} className="workout-form">
                     <div>
-                    <label htmlFor='workout-name-input'>
+                    <label className='workout-name-input'>
                         LIFT:
                     </label>
                     <input 

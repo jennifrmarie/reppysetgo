@@ -5,9 +5,15 @@
     margin-top: 100px;
 }
 
-.account_button {
-    margin-top: 90px;
+.or {
+    margin: 20px;
 }
+
+.account_button {
+    background-color: black;
+    color: white;
+}
+
 
 .account_button:hover {
     cursor: pointer;

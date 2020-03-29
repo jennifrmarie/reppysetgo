@@ -79,7 +79,7 @@ render() {
         className='li-date' 
         onClick={() => this.props.history.push(`/add-workout/${dateid}`)}
       >
-        {moment(date).format('MMM Do, YYYY')}
+        <span>{moment(date).format('MMM Do, YYYY')}</span>
       </button>
     )
 

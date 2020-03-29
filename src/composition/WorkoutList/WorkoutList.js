@@ -39,8 +39,8 @@ export default class WorkoutList extends Component {
           <div className="item-name">
             
             <span className="workout_span">{item.name}{':'}</span>
-            <span className="workout_span">{item.sets}{' X '}</span>
-            <span className="workout_span">{item.reps}{'  :  '}</span>
+            <span className="workout_span">{item.sets}{'X'}</span>
+            <span className="workout_span">{item.reps}{':  '}</span>
             <span className="workout_span">{item.weight}{"  lbs"}{"\n"}</span>
             
           </div>

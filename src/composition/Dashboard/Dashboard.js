@@ -104,7 +104,7 @@ render() {
             modifiers={modifiers}
             modifiersStyles={modifiersStyles}
           />
-          <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon>
+          <FontAwesomeIcon icon={faChevronDown} transform="up-4"></FontAwesomeIcon>
         </div>
         <SingleDate />
         </div>
